@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MyAppPedidoApplication {
 
 	public static void main(String[] args) {
-		// para commit
 		SpringApplication.run(MyAppPedidoApplication.class, args);
 	}
 

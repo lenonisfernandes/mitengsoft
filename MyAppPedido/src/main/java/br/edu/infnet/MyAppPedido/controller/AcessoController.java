@@ -22,6 +22,8 @@ public class AcessoController extends HttpServlet {
 	@PostMapping(value = "/login")
 	public String acessar(Model model, @RequestParam String email, @RequestParam String senha) {
 
+		 
+		
 		if(email.equalsIgnoreCase(senha)) {
 			return "index";
 		} else {
