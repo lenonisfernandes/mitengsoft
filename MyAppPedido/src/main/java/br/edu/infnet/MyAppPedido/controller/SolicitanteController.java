@@ -22,16 +22,23 @@ public class SolicitanteController {
 	@Autowired
 	private SolicitanteService solicitanteService;
 	
-	@GetMapping(value = "/solicitantes")
+	@GetMapping(value = "/solicitante")
 	public String telaCadastro() {
-		
 		return "solicitante/cadastro";
 	}
 	
-	@GetMapping(value = "/solicitante/cadastro")
+	@GetMapping(value = "/solicitantes")
 	public String telaLista(Model model) {
 		
-		model.addAttribute("lista", solicitanteService.obterLista());
+		List<Solicitante> solicitantes = new ArrayList<Solicitante>(
+				Arrays.asList(
+						new Solicitante("Lenon", "lenon@lenon.com", "123456789012"),
+						new Solicitante("Ignes", "lenon@lenon.com", "123456789012"),
+						new Solicitante("Bruna", "lenon@lenon.com", "123456789012")
+						)
+				);
+		
+		model.addAttribute("lista", solicitantes);
 		
 		return "solicitante/lista";
 	}
@@ -39,23 +46,25 @@ public class SolicitanteController {
 	@PostMapping
 	public String incluir(Model model, Solicitante solicitante) {
 		
-		solicitanteService.incluir(solicitante);
+		//solicitanteService.incluir(solicitante);
 		
-		model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi cadastrado com sucesso!");
+		//model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi cadastrado com sucesso!");
+		
+		model.addAttribute("nome", solicitante.getNome());
 		
 		return telaLista(model);
 	}
 	
-	@GetMapping(value = "/solicitante/{id}/excluir")
-	public String excluir(Model model, @PathVariable Integer id) {
-		
-		Solicitante solicitante = solicitanteService.obterPorId(id);
-		solicitanteService.excluir(id);
-		
-		model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi removido com sucesso!");
-		
-		return telaLista(model);
-	}
+//	@GetMapping(value = "/solicitante/{id}/excluir")
+//	public String excluir(Model model, @PathVariable Integer id) {
+//		
+//		Solicitante solicitante = solicitanteService.obterPorId(id);
+//		solicitanteService.excluir(id);
+//		
+//		model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi removido com sucesso!");
+//		
+//		return telaLista(model);
+//	}
 	
 
 }
