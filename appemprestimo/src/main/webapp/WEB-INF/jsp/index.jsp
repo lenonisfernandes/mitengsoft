@@ -13,7 +13,7 @@
 	  <h2>AppEmprestimo: Sistema de Gestão de Empréstimo</h2>
 	  <h3>Lenon I S Fernandes</h3>
 	  
-	  <h4><a href="/aluno">Cadastramento de Alunos</a></h4>
+	  <h4><a href="/alunos">Cadastramento de Alunos</a></h4>
 	</div>
   
   
