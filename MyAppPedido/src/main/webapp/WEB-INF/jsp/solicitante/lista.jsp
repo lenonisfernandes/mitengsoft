@@ -16,6 +16,12 @@
 <div class="container mt-3">
 	<h2>Cadastramento de Solicitantes</h2>
 	
+	<c:if test="${not empty mensagem }">
+		<div class="alert alert-success">
+	  		<strong>Confirmação!</strong> ${mensagem }
+		</div>
+	</c:if>
+	
 	<form action="/solicitante" method="get">
 		<button type="submit" class="btn btn-primary">Novo</button>
 	</form>
@@ -28,17 +34,21 @@
   	  <table class="table table-striped">
 	    <thead>
 	      <tr>
+	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>E-mail</th>
 	        <th>CPF</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	    	<c:forEach var="s" items="${lista}"> 
 		      <tr>
+		      	<td>${s.id }</td>
 		        <td>${s.nome}</td>
 		        <td>${s.email}</td>
 		        <td>${s.cpf}</td>
+		        <td><a href="/solicitante/${s.id}/excluir">excluir</a></td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

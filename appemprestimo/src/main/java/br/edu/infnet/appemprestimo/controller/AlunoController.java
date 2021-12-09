@@ -41,8 +41,8 @@ public class AlunoController {
 	@PostMapping(value =  "/aluno/incluir")
 	public String incluir(Model model, Aluno aluno) {
 		
-		model.addAttribute("nome", aluno.getNome());
+		model.addAttribute("mensagem", "O aluno"+aluno.getNome()+" foi cadastrado com sucesso.");
 		
-		return "confirmacao";
+		return "aluno/lista";
 	}
 }

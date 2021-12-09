@@ -30,41 +30,30 @@ public class SolicitanteController {
 	@GetMapping(value = "/solicitantes")
 	public String telaLista(Model model) {
 		
-		List<Solicitante> solicitantes = new ArrayList<Solicitante>(
-				Arrays.asList(
-						new Solicitante("Lenon", "lenon@lenon.com", "123456789012"),
-						new Solicitante("Ignes", "lenon@lenon.com", "123456789012"),
-						new Solicitante("Bruna", "lenon@lenon.com", "123456789012")
-						)
-				);
-		
-		model.addAttribute("lista", solicitantes);
+		model.addAttribute("lista", solicitanteService.obterLista());
 		
 		return "solicitante/lista";
 	}
 	
-	@PostMapping
+	@PostMapping(value="/solicitante/incluir")
 	public String incluir(Model model, Solicitante solicitante) {
 		
-		//solicitanteService.incluir(solicitante);
-		
-		//model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi cadastrado com sucesso!");
-		
-		model.addAttribute("nome", solicitante.getNome());
+		model.addAttribute("mensagem", "O Solicitante "+solicitante.getNome()+" foi cadastrado com sucesso.");
+		solicitanteService.incluir(solicitante);
 		
 		return telaLista(model);
 	}
 	
-//	@GetMapping(value = "/solicitante/{id}/excluir")
-//	public String excluir(Model model, @PathVariable Integer id) {
-//		
-//		Solicitante solicitante = solicitanteService.obterPorId(id);
-//		solicitanteService.excluir(id);
-//		
-//		model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi removido com sucesso!");
-//		
-//		return telaLista(model);
-//	}
+	@GetMapping(value = "/solicitante/{id}/excluir")
+	public String excluir(Model model, @PathVariable Integer id) {
+		
+		Solicitante solicitante = solicitanteService.obterPorId(id);
+		solicitanteService.excluir(id);
+		
+		model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi removido com sucesso!");
+		
+		return telaLista(model);
+	}
 	
 
 }

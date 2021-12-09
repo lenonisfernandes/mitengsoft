@@ -4,32 +4,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.MyAppPedido.model.domain.Solicitante;
+import br.edu.infnet.MyAppPedido.model.repository.SolicitanteRepository;
 
 @Service
 public class SolicitanteService {
 	
-	private Map<Integer, Solicitante> mapaSolicitante = new HashMap<Integer, Solicitante>();
-	private static Integer id = 1;
+	@Autowired
+	private SolicitanteRepository solicitanteRepository;
 	
 	public List<Solicitante> obterLista() {
-		return new ArrayList<Solicitante>(mapaSolicitante.values());
+		
+		return (List<Solicitante>)solicitanteRepository.findAll();
 	}
 	
 	public void incluir(Solicitante solicitante) {
-		solicitante.setId(id++);
-		mapaSolicitante.put(solicitante.getId(), solicitante);
+		solicitanteRepository.save(solicitante);
 		
 	}
 	
 	public void excluir(Integer id) {
-		mapaSolicitante.remove(id);
+		solicitanteRepository.deleteById(id);
 	}
 	
 	public Solicitante obterPorId(Integer id) {
-		return mapaSolicitante.get(id);
+		return solicitanteRepository.findById(id).orElse(null);
 	}
 }

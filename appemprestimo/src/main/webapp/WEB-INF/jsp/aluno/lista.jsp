@@ -17,6 +17,12 @@
 <div class="container mt-3">
 	<h2>Cadastramento de Alunos</h2>
 	
+	<c:if test="${not empty mensagem }">
+		<div class="alert alert-success">
+	  		<strong>Confirmação!</strong> ${mensagem }
+		</div>
+	</c:if>
+	
 	<form action="aluno" method="get">
 		<button type="submit" class="btn btn-primary">Novo</button>
 	</form>
