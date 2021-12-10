@@ -39,8 +39,8 @@
 	        <th>Nome</th>
 	        <th>E-mail</th>
 	        <th>CPF</th>
-	        <th>Usuário</th>
-	        <th></th>
+<!-- 	        <th>Usuário</th> -->
+<!-- 	        <th></th> -->
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -50,8 +50,8 @@
 		        <td>${s.nome}</td>
 		        <td>${s.email}</td>
 		        <td>${s.cpf}</td>
-		        <td>${s.usuario.nome }</td>
-		        <td><a href="/solicitante/${s.id}/excluir">excluir</a></td>
+<%-- 		        <td>${s.usuario.nome }</td> --%>
+<%-- 		        <td><a href="/solicitante/${s.id}/excluir">excluir</a></td> --%>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

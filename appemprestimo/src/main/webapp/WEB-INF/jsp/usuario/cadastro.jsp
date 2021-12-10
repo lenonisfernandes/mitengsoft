@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>AppPedido</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
@@ -12,9 +14,17 @@
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 <div class="container mt-3">
-  <h2>Cadastramento de Solicitantes</h2>
+  <h2>Cadastramento de Usuário</h2>
   
-  <form action="/solicitante/incluir" method="post">
+  	<c:if test="${not empty mensagem }">
+		<div class="alert alert-success">
+	  		<strong>Confirmação!</strong> ${mensagem }
+		</div>
+	</c:if>
+	
+  
+  
+  <form action="/usuario/incluir" method="post">
     <div class="mb-3 mt-3">
       <label>Nome:</label>
       <input type="text" class="form-control" value="Lenon" name="nome">
@@ -26,8 +36,8 @@
     </div>
     
     <div class="mb-3 mt-3">
-      <label>CPF:</label>
-      <input type="text" class="form-control" placeholder="Entre com o seu cpf" value="12345678901" name="cpf">
+      <label>Senha:</label>
+      <input type="password" class="form-control" placeholder="Entre com a sua senha" value="lenon@email.com" name="senha">
     </div>
 
     <button type="submit" class="btn btn-primary">Cadastrar</button>

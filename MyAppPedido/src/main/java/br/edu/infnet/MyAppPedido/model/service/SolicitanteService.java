@@ -8,8 +8,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.MyAppPedido.model.domain.Solicitante;
+import br.edu.infnet.MyAppPedido.model.domain.Usuario;
 import br.edu.infnet.MyAppPedido.model.repository.SolicitanteRepository;
 
 @Service
@@ -21,6 +23,11 @@ public class SolicitanteService {
 	public List<Solicitante> obterLista() {
 		
 		return (List<Solicitante>)solicitanteRepository.findAll();
+	}
+	
+	public List<Solicitante> obterLista(Usuario usuario) {
+		
+		return (List<Solicitante>)solicitanteRepository.findAll(usuario.getId());
 	}
 	
 	public void incluir(Solicitante solicitante) {

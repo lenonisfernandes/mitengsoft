@@ -1,4 +1,4 @@
-package br.edu.infnet.MyAppPedido;
+package br.edu.infnet.appemprestimo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -6,9 +6,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.MyAppPedido.model.domain.Usuario;
-import br.edu.infnet.MyAppPedido.model.repository.UsuarioRepository;
-import br.edu.infnet.MyAppPedido.model.service.UsuarioService;
+import br.edu.infnet.appemprestimo.model.domain.Usuario;
+import br.edu.infnet.appemprestimo.model.service.UsuarioService;
+
 
 @Component
 @Order(1)

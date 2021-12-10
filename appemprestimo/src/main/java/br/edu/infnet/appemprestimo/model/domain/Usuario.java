@@ -1,4 +1,4 @@
-package br.edu.infnet.MyAppPedido.model.domain;
+package br.edu.infnet.appemprestimo.model.domain;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="TUsuario")
+@Table(name="TUsuario")
 public class Usuario {
 	
 	@Id
@@ -22,17 +22,17 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private boolean admin;
-	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-	@JoinColumn(name="idUsuario")
-	private List<Solicitante> solicitantes;
-	
-	public List<Solicitante> getSolicitantes() {
-		return solicitantes;
-	}
-
-	public void setSolicitantes(List<Solicitante> solicitantes) {
-		this.solicitantes = solicitantes;
-	}
+//	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+//	@JoinColumn(name="idUsuario")
+//	private List<Cliente> clientes;
+//	
+//	public List<Cliente> getSolicitantes() {
+//		return clientes;
+//	}
+//
+//	public void setSolicitantes(List<Cliente> solicitantes) {
+//		this.clientes = solicitantes;
+//	}
 
 	public Usuario() {
 	}

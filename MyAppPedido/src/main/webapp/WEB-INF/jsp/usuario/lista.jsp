@@ -15,22 +15,10 @@
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 <div class="container mt-3">
-	<h2>Cadastramento de Solicitantes</h2>
-	
-	<c:if test="${not empty mensagem }">
-		<div class="alert alert-success">
-	  		<strong>Confirmação!</strong> ${mensagem }
-		</div>
-	</c:if>
-	
-	<form action="/solicitante" method="get">
-		<button type="submit" class="btn btn-primary">Novo</button>
-	</form>
-	
-	<hr>
+	<h2>Cadastramento de Usuários</h2>
 	
 	<c:if test="${not empty lista}">
-	<h2>Total de alunos: ${lista.size()}</h2><hr>
+	<h2>Total de usuários: ${lista.size()}</h2><hr>
 	
   	  <table class="table table-striped">
 	    <thead>
@@ -38,20 +26,22 @@
 	      	<th>ID</th>
 	        <th>Nome</th>
 	        <th>E-mail</th>
-	        <th>CPF</th>
-	        <th>Usuário</th>
+	        <th>Solicitantes</th>
+	        <c:if test="${user.admin}">
 	        <th></th>
+	        </c:if>
 	      </tr>
 	    </thead>
 	    <tbody>
-	    	<c:forEach var="s" items="${lista}"> 
+	    	<c:forEach var="u" items="${lista}"> 
 		      <tr>
-		      	<td>${s.id }</td>
-		        <td>${s.nome}</td>
-		        <td>${s.email}</td>
-		        <td>${s.cpf}</td>
-		        <td>${s.usuario.nome }</td>
-		        <td><a href="/solicitante/${s.id}/excluir">excluir</a></td>
+		      	<td>${u.id }</td>
+		        <td>${u.nome}</td>
+		        <td>${u.email}</td>
+		        <td>${u.solicitantes.size() }</td>
+		        <c:if test="${user.admin}">
+		        <td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+		        </c:if>
 		      </tr>
 	      </c:forEach>
 	    </tbody>
@@ -59,7 +49,7 @@
 	  
 	  </c:if>
 	  <c:if test="${empty lista }">
-	  	<h2>Não existem solicitantes cadastrados!!!</h2>
+	  	<h2>Não existem usuários cadastrados!!!</h2>
 	  </c:if>
 
 </div>

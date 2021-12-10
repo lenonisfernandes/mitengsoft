@@ -1,5 +1,8 @@
 package br.edu.infnet.appemprestimo.model.domain;
 
+import br.edu.infnet.appemprestimo.exceptions.QuantidadeAcademicoAlugadoException;
+import br.edu.infnet.appemprestimo.exceptions.QuantidadeAluguelNegativaException;
+
 public class Livro extends Material {
 
 	Integer edicao;
@@ -10,14 +13,14 @@ public class Livro extends Material {
 		super();
 	}
 	
-	public Livro(Integer id, String titulo, String autor, Integer alugado, 
+	public Livro(Integer id, String titulo, String autor, 
 			Integer edicao, Integer ano, Integer qnt) {
-		super(id, titulo, autor, alugado);
+		super(id, titulo, autor);
 		this.edicao = edicao;
 		this.ano = ano;
 		this.qnt = qnt;
 	}
-
+	
 	public Integer getEdicao() {
 		return edicao;
 	}
@@ -60,6 +63,13 @@ public class Livro extends Material {
 		
 		return texto.toString();
 		
+	}
+	
+	public void setAlugado(Integer alugado) throws QuantidadeAluguelNegativaException {
+		if (alugado < 0) {
+			throw new QuantidadeAluguelNegativaException("Não há quantidades negativas de materiais alugados.");
+		}
+		this.alugado = alugado;
 	}
 	
 	

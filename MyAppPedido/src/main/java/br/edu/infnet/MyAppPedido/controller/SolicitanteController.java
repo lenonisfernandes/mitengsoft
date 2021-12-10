@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.MyAppPedido.model.domain.Solicitante;
+import br.edu.infnet.MyAppPedido.model.domain.Usuario;
 import br.edu.infnet.MyAppPedido.model.service.SolicitanteService;
 
 @Controller
@@ -28,31 +30,33 @@ public class SolicitanteController {
 	}
 	
 	@GetMapping(value = "/solicitantes")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		model.addAttribute("lista", solicitanteService.obterLista());
+		model.addAttribute("lista", solicitanteService.obterLista(usuario));
 		
 		return "solicitante/lista";
 	}
 	
 	@PostMapping(value="/solicitante/incluir")
-	public String incluir(Model model, Solicitante solicitante) {
+	public String incluir(Model model, Solicitante solicitante, @SessionAttribute("user") Usuario usuario) {
 		
 		model.addAttribute("mensagem", "O Solicitante "+solicitante.getNome()+" foi cadastrado com sucesso.");
+		
+		solicitante.setUsuario(usuario);
 		solicitanteService.incluir(solicitante);
 		
-		return telaLista(model);
+		return telaLista(model, usuario);
 	}
 	
 	@GetMapping(value = "/solicitante/{id}/excluir")
-	public String excluir(Model model, @PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
 		
 		Solicitante solicitante = solicitanteService.obterPorId(id);
 		solicitanteService.excluir(id);
 		
 		model.addAttribute("mensagem", "O solicitante "+solicitante.getNome()+" foi removido com sucesso!");
 		
-		return telaLista(model);
+		return telaLista(model, usuario);
 	}
 	
 
