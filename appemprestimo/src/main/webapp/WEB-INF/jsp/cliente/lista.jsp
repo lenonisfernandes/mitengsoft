@@ -15,7 +15,7 @@
 <c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 <div class="container mt-3">
-	<h2>Cadastramento de Solicitantes</h2>
+	<h2>Cadastramento de Cliente</h2>
 	
 	<c:if test="${not empty mensagem }">
 		<div class="alert alert-success">
@@ -23,7 +23,7 @@
 		</div>
 	</c:if>
 	
-	<form action="/solicitante" method="get">
+	<form action="/cliente" method="get">
 		<button type="submit" class="btn btn-primary">Novo</button>
 	</form>
 	
@@ -39,8 +39,8 @@
 	        <th>Nome</th>
 	        <th>E-mail</th>
 	        <th>CPF</th>
-<!-- 	        <th>Usuário</th> -->
-<!-- 	        <th></th> -->
+	        <th>Usuário</th>
+	        <th></th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -50,8 +50,8 @@
 		        <td>${s.nome}</td>
 		        <td>${s.email}</td>
 		        <td>${s.cpf}</td>
-<%-- 		        <td>${s.usuario.nome }</td> --%>
-<%-- 		        <td><a href="/solicitante/${s.id}/excluir">excluir</a></td> --%>
+		        <td>${s.usuario.nome }</td>
+		        <td><a href="/cliente/${s.id}/excluir">excluir</a></td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>

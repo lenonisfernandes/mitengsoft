@@ -27,17 +27,17 @@
   <form action="/usuario/incluir" method="post">
     <div class="mb-3 mt-3">
       <label>Nome:</label>
-      <input type="text" class="form-control" value="Lenon" name="nome">
+      <input type="text" class="form-control" value="Bruna" name="nome">
     </div>
     
     <div class="mb-3 mt-3">
       <label>E-mail:</label>
-      <input type="email" class="form-control" placeholder="Entre com o seu email" value="lenon@email.com" name="email">
+      <input type="email" class="form-control" placeholder="Entre com o seu email" value="bruna@email.com" name="email">
     </div>
     
     <div class="mb-3 mt-3">
       <label>Senha:</label>
-      <input type="password" class="form-control" placeholder="Entre com a sua senha" value="lenon@email.com" name="senha">
+      <input type="password" class="form-control" placeholder="Entre com a sua senha" value="123" name="senha">
     </div>
 
     <button type="submit" class="btn btn-primary">Cadastrar</button>

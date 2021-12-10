@@ -22,20 +22,24 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private boolean admin;
-//	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-//	@JoinColumn(name="idUsuario")
-//	private List<Cliente> clientes;
-//	
-//	public List<Cliente> getSolicitantes() {
-//		return clientes;
-//	}
-//
-//	public void setSolicitantes(List<Cliente> solicitantes) {
-//		this.clientes = solicitantes;
-//	}
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name="idUsuario")
+	private List<Cliente> clientes;
+	
+	public List<Cliente> getSolicitantes() {
+		return clientes;
+	}
+
+	public void setSolicitantes(List<Cliente> solicitantes) {
+		this.clientes = solicitantes;
+	}
 
 	public Usuario() {
 	}
+	
+	public Usuario(Integer id) {
+		this.id = id;	
+	}	
 	
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
